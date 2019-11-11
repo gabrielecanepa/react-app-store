@@ -1,9 +1,12 @@
+import AppsList from './apps-list'
+import GlobalStyle from './theme/global'
 import React from 'react'
 
 const App = () => (
-  <div>
-    <h1>{'Talkdesk Apps Listing'}</h1>
-  </div>
+  <>
+    <GlobalStyle />
+    <AppsList />
+  </>
 )
 
 export default App

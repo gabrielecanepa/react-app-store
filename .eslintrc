@@ -17,7 +17,8 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react/all",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "react-app"
   ],
   "settings": {
     "import/resolver": {
@@ -60,6 +61,7 @@
     "react/jsx-handler-names": 0,
     "react/jsx-max-depth": [2, { "max": 4 }],
     "react/jsx-no-bind": 2,
+    "react/jsx-props-no-spreading": 0,
     "react/jsx-sort-props": [
       "error",
       {
@@ -88,7 +90,7 @@
     "sort-imports-es6-autofix/sort-imports-es6": [
       2,
       {
-        "ignoreCase": true,
+        "ignoreCase": false,
         "ignoreMemberSort": false,
         "memberSyntaxSortOrder": ["single", "multiple", "all", "none"]
       }
