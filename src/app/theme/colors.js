@@ -9,13 +9,14 @@ const palette = {
   red: '#fd1015',
 }
 
-const semanticScheme = {
+const scheme = {
   primary: palette.teal,
   primaryText: palette.blue,
+  background: palette.grayLight,
   error: palette.red,
 }
 
 export default {
   ...palette,
-  ...semanticScheme,
+  ...scheme,
 }

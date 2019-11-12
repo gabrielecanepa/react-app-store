@@ -16,16 +16,12 @@ const StyledPagination = styled.ul`
 
 const StyledPaginationItem = styled(({ active, children, disabled, ...props }) => (
   <li {...props}>
-    <button disabled={disabled} type="button">
+    <button disabled={disabled || active} type="button">
       {children}
     </button>
   </li>
 ))`
-  margin-right: 0.25rem;
-
-  :last-child {
-    margin-right: 0;
-  }
+  margin: 0 0.125rem;
 
   button {
     color: ${colors.grayDark};
@@ -34,26 +30,24 @@ const StyledPaginationItem = styled(({ active, children, disabled, ...props }) =
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 
+    :disabled {
+      color: ${colors.grayDark}50;
+    }
     :not([disabled]) {
       cursor: pointer;
-    }
-    :disabled {
-      color: ${colors.gray};
     }
     :not([disabled]):hover {
       background: ${colors.primary};
       color: ${colors.white};
     }
-    :active {
-      background: ${colors.grayDark};
-      color: ${colors.white};
-      outline: none;
-    }
     ${({ active }) =>
       active &&
       `
       background: ${colors.primary};
-      color: ${colors.white};
+
+      :disabled {
+        color: ${colors.white};
+      }
     `}
   }
 `
@@ -69,7 +63,7 @@ const PaginationItem = ({ children, onClick, page, ...props }) => {
 }
 
 const Pagination = ({ count, page, setPage }) => {
-  const indexes = useMemo(() => [...Array(Math.ceil(count / config.appsPerPage)).keys()], [count])
+  const pages = useMemo(() => [...Array(Math.ceil(count / config.paginationSize)).keys()], [count])
 
   const onPaginationItemClick = useCallback(
     page => {
@@ -85,17 +79,15 @@ const Pagination = ({ count, page, setPage }) => {
   return (
     <StyledPagination>
       <StyledPaginationItem
-        aria-label={page > 0 ? 'Go to the previous page' : undefined}
         disabled={page === 0}
         onClick={goToPreviousPage}
         title={page > 0 ? 'Go to the previous page' : undefined}
       >
         {'<'}
       </StyledPaginationItem>
-      {indexes.map(pageNumber => (
+      {pages.map(pageNumber => (
         <PaginationItem
           active={pageNumber === page}
-          disabled={pageNumber === page}
           key={pageNumber}
           onClick={onPaginationItemClick}
           page={pageNumber}
@@ -105,10 +97,9 @@ const Pagination = ({ count, page, setPage }) => {
         </PaginationItem>
       ))}
       <StyledPaginationItem
-        aria-label={page < indexes[indexes.length - 1] ? 'Go to the next page' : undefined}
-        disabled={page === indexes[indexes.length - 1]}
+        disabled={page === pages[pages.length - 1]}
         onClick={goToNextPage}
-        title={page < indexes[indexes.length - 1] ? 'Go to the next page' : undefined}
+        title={page < pages[pages.length - 1] ? 'Go to the next page' : undefined}
       >
         {'>'}
       </StyledPaginationItem>

@@ -40,7 +40,7 @@
     "jsx-a11y/no-autofocus": 0,
     "local-rules/no-relative-parent-imports": 2,
     "max-lines": 2,
-    "no-console": 0,
+    "no-console": 1,
     "object-shorthand": ["error", "always"],
     "prettier/prettier": [
       "error",
@@ -59,7 +59,7 @@
     "react/jsx-curly-brace-presence": ["error", { "props": "never", "children": "ignore" }],
     "react/jsx-filename-extension": 0,
     "react/jsx-handler-names": 0,
-    "react/jsx-max-depth": [2, { "max": 4 }],
+    "react/jsx-max-depth": [2, { "max": 5 }],
     "react/jsx-no-bind": 2,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-sort-props": [

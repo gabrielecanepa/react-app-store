@@ -2,7 +2,6 @@ import React from 'react'
 import TextHighlighter from 'react-highlight-words'
 import styled from 'styled-components'
 import { colors } from 'app/theme'
-import { hexToRgba } from 'utils/helpers'
 
 const AppContainer = styled.div`
   box-shadow: 0 2px 3px 0 ${colors.gray}, 0 0 3px 0 ${colors.gray};
@@ -26,7 +25,7 @@ const BoxInfo = styled.div`
   transition: all 0.3s ease-in-out;
 
   :hover {
-    background-color: ${hexToRgba(colors.grayLight, 0.3)};
+    background-color: ${colors.background}30;
   }
 `
 
@@ -84,7 +83,10 @@ const App = ({ name, description, categories, subscriptions, searchTerm }) => (
                     <sup>{'€'}</sup>
                   </>
                 ) : (
-                  'Free'
+                  <>
+                    {'Free'}
+                    <sup />
+                  </>
                 )}
               </h3>
             </li>

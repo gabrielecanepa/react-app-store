@@ -15,8 +15,8 @@ export default createGlobalStyle`
     font-weight: 300;
     line-height: 1.5;
     text-align: left;
-    color: ${colors.blue};
-    background-color: ${colors.grayLight};
+    color: ${colors.primaryText};
+    background-color: ${colors.background};
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
     -moz-osx-font-smoothing: grayscale;
@@ -24,7 +24,7 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  html, body {
+  html, body, body > div {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -47,7 +47,7 @@ export default createGlobalStyle`
   }
 
   p {
-    color: ${colors.greyDark};
+    color: ${colors.grayDark};
   }
 
   a {
@@ -60,17 +60,16 @@ export default createGlobalStyle`
     border: none;
 
     :active {
-      box-shadow: none;
       outline: none;
     }
   }
 
   ul {
+    flex-wrap: wrap;
     list-style-type: none;
   }
 
   :focus {
-    box-shadow: inset 0 0 0 2px ${colors.primary};
-    outline: none;
+    outline: ${colors.primary} auto 5px;
   }
 `

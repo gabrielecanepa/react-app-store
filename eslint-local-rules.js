@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 const moduleVisitor = require('eslint-module-utils/moduleVisitor').default
 
 module.exports = {

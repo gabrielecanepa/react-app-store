@@ -12,8 +12,6 @@ const Nav = styled.nav`
   }
 `
 
-const NavList = styled.ul``
-
 const ListItem = styled(({ active, children, ...props }) => (
   <li {...props}>
     <button disabled={active} type="button">
@@ -70,7 +68,7 @@ const NavMenu = ({ activeCategory, categories, setActiveCategory, setPage }) => 
   return (
     <Nav>
       <h2>{'Categories'}</h2>
-      <NavList>
+      <ul>
         <Category
           active={!activeCategory}
           onClick={onCategoryClick}
@@ -89,7 +87,7 @@ const NavMenu = ({ activeCategory, categories, setActiveCategory, setPage }) => 
             {category}
           </Category>
         ))}
-      </NavList>
+      </ul>
     </Nav>
   )
 }

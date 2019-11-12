@@ -1,15 +1,11 @@
-import AppsList from './apps-list'
-import EmptyState from './empty-state'
-import ErrorMessage from './error-message'
 import Header from './header'
-import Loader from 'assets/icons/loader.svg'
+import List from './list'
 import NavMenu from './nav-menu'
 import Pagination from './pagination'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import config from 'config'
 import styled from 'styled-components'
-import { apiGetApps, apiRequest } from 'utils/requests'
-import { paginateRecords } from 'utils/helpers'
+import { paginateRecords } from 'utils'
 
 const FlexContainer = styled.div`
   display: flex;
@@ -31,23 +27,14 @@ const MainSection = styled.section`
   width: 100%;
 `
 
+const NoResultsMessage = ({ searchTerm }) => <p>{`Can't find any app matching "${searchTerm}"`}</p>
+
 const totalSubscriptionPrice = app => app.subscriptions.reduce((total, subscription) => total + subscription.price, 0)
 
-const App = () => {
-  const [apps, setApps] = useState([])
+const AppsList = ({ apps }) => {
   const [activeCategory, setActiveCategory] = useState(null)
-  const [error, setError] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [page, setPage] = useState(0)
-
-  useEffect(() => {
-    ;(async () => {
-      const { json, requestError } = await apiRequest(apiGetApps, [])
-      requestError ? setError(requestError) : setApps(json)
-      setIsLoading(false)
-    })()
-  }, [])
 
   const categories = useMemo(
     () => [
@@ -69,10 +56,6 @@ const App = () => {
     [activeCategory, apps, searchTerm]
   )
 
-  if (isLoading) return <img alt="Loading..." height="100" src={Loader} width="100" />
-
-  if (error) return <ErrorMessage error={error} />
-
   return (
     <FlexContainer>
       <NavMenu
@@ -86,14 +69,14 @@ const App = () => {
         {filteredApps.length > 0 ? (
           <>
             <Pagination count={filteredApps.length} page={page} setPage={setPage} />
-            <AppsList apps={paginateRecords(filteredApps, page, config.appsPerPage)} searchTerm={searchTerm} />
+            <List apps={paginateRecords(filteredApps, page, config.paginationSize)} searchTerm={searchTerm} />
           </>
         ) : (
-          <EmptyState />
+          <NoResultsMessage searchTerm={searchTerm} />
         )}
       </MainSection>
     </FlexContainer>
   )
 }
 
-export default App
+export default AppsList

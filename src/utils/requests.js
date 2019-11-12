@@ -1,20 +1,32 @@
-const BASE_API_URL = '.'
+import { BASE_API_URL } from 'config'
+
 const APPS_URL = `${BASE_API_URL}/apps.json`
 
 export const apiRequest = async (requestMethod, args) => {
   const promise = args.length === 0 ? requestMethod() : requestMethod(...args)
   const response = await promise.catch(() => null)
-  const requestError = await handleRequestError(response)
-  const json = !requestError && (await response.json())
+  const json = await parseResponse(response)
+  const requestError = !json && (await handleRequestError(response))
   return { json, requestError }
 }
 
+const parseResponse = async response => {
+  try {
+    return await response.json()
+  } catch (e) {
+    return null
+  }
+}
+
 const handleRequestError = async response =>
-  response.ok
-    ? undefined
+  response
+    ? {
+        status: response.status,
+        type: response.status >= 500 ? 'server' : 'request',
+      }
     : {
-        code: response.status,
-        message: response.statusText,
+        status: 400,
+        type: 'request',
       }
 
 const apiGetRequest = async url =>
