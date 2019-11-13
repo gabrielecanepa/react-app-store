@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Loader } from 'assets/icons'
+import { Loader as LoaderIcon } from 'assets/icons'
 
 const FlexContainer = styled.div`
   height: 100%;
@@ -12,7 +12,7 @@ const FlexContainer = styled.div`
   cursor: wait;
 `
 
-const StyledLoader = styled(Loader)`
+const StyledLoader = styled(LoaderIcon)`
   fill: ${({ theme }) => theme.primary};
   width: 6rem;
 
@@ -21,10 +21,10 @@ const StyledLoader = styled(Loader)`
   }
 `
 
-const Loading = () => (
+const Loader = () => (
   <FlexContainer>
     <StyledLoader />
   </FlexContainer>
 )
 
-export default Loading
+export default Loader

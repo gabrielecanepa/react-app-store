@@ -14,7 +14,6 @@ const StyledInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.grayLight};
   font-size: 1rem;
   font-weight: 300;
-  outline: 0;
   padding: 1rem;
   resize: none;
   transition: all 300ms ease-in-out;
@@ -26,6 +25,7 @@ const StyledInput = styled.input`
     border: 1px solid ${({ theme }) => theme.primary};
     box-shadow: none;
     cursor: auto;
+    outline: none;
   }
 `
 
