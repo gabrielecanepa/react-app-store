@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import theme, { GlobalStyle } from './theme'
 import { AppsList, Error, Loading } from './screens'
-import { GlobalStyle } from './theme'
+import { ThemeProvider } from 'styled-components'
 import { apiGetApps, apiRequest } from 'utils/requests'
 
 const App = () => {
@@ -17,10 +18,10 @@ const App = () => {
   }, [])
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       {isLoading ? <Loading /> : error ? <Error error={error} /> : <AppsList apps={apps} />}
-    </>
+    </ThemeProvider>
   )
 }
 

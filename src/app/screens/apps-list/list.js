@@ -1,31 +1,29 @@
+import Highlighter from 'react-highlight-words'
 import React from 'react'
-import TextHighlighter from 'react-highlight-words'
 import styled from 'styled-components'
-import { colors } from 'app/theme'
 
 const AppContainer = styled.div`
-  box-shadow: 0 2px 3px 0 ${colors.gray}, 0 0 3px 0 ${colors.gray};
+  box-shadow: 0 2px 3px 0 ${({ theme }) => theme.colors.gray}, 0 0 3px 0 ${({ theme }) => theme.colors.gray};
   position: relative;
-  transition: background 0.3s ease-in-out;
   width: 100%;
 `
 
 const AppTitle = styled.h1`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.primary};
 `
 
 const BoxInfo = styled.div`
-  background-color: ${colors.white};
+  background-color: ${({ theme }) => theme.light};
   clear: both;
   cursor: pointer;
   flex: 1;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
   position: relative;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 300ms ease-in-out;
 
   :hover {
-    background-color: ${colors.background}30;
+    background-color: ${({ theme }) => theme.background}30;
   }
 `
 
@@ -47,12 +45,12 @@ const BoxInfoFooter = styled.div`
     padding: 0 1rem 0 0;
   }
   li span {
-    color: ${colors.grayDark};
+    color: ${({ theme }) => theme.secondaryText};
   }
 `
 
 const Tags = styled.div`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.primary};
   font-weight: 400;
   text-align: right;
 `
@@ -63,10 +61,10 @@ const App = ({ name, description, categories, subscriptions, searchTerm }) => (
       <BoxInfoContent>
         <div>
           <AppTitle>
-            <TextHighlighter searchWords={[searchTerm]} textToHighlight={name} />
+            <Highlighter searchWords={[searchTerm]} textToHighlight={name} />
           </AppTitle>
           <p>
-            <TextHighlighter searchWords={[searchTerm]} textToHighlight={description} />
+            <Highlighter searchWords={[searchTerm]} textToHighlight={description} />
           </p>
         </div>
         <Tags>{categories.sort().join(' / ')}</Tags>

@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import config from 'config'
 import styled from 'styled-components'
-import { colors } from 'app/theme'
 
 const StyledPagination = styled.ul`
   width: 100%;
@@ -24,31 +23,23 @@ const StyledPaginationItem = styled(({ active, children, disabled, ...props }) =
   margin: 0 0.125rem;
 
   button {
-    color: ${colors.grayDark};
+    color: ${({ theme }) => theme.secondaryText};
     font-size: 1rem;
     padding: 0.375rem 0.4375rem;
     text-decoration: none;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 300ms ease-in-out;
+    ${({ active, theme }) => active && `background: ${theme.primary};`}
 
     :disabled {
-      color: ${colors.grayDark}50;
+      color: ${({ active, theme }) => (active ? theme.light : `${theme.secondaryText}50`)};
     }
     :not([disabled]) {
       cursor: pointer;
     }
     :not([disabled]):hover {
-      background: ${colors.primary};
-      color: ${colors.white};
+      background: ${({ theme }) => theme.primary};
+      color: ${({ theme }) => theme.light};
     }
-    ${({ active }) =>
-      active &&
-      `
-      background: ${colors.primary};
-
-      :disabled {
-        color: ${colors.white};
-      }
-    `}
   }
 `
 

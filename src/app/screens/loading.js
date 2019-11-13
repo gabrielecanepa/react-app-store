@@ -9,11 +9,21 @@ const FlexContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  cursor: wait;
+`
+
+const StyledLoader = styled(Loader)`
+  fill: ${({ theme }) => theme.primary};
+  width: 6rem;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+    width: 8rem;
+  }
 `
 
 const Loading = () => (
   <FlexContainer>
-    <Loader height="150" width="150" />
+    <StyledLoader />
   </FlexContainer>
 )
 

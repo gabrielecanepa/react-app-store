@@ -13,21 +13,19 @@ const FlexContainer = styled.div`
   margin: 2rem auto;
   max-width: 1400px;
   text-align: center;
-
-  > * {
-    padding: 15px;
-    flex: 1 100%;
-  }
 `
 
 const MainSection = styled.section`
+  padding: 1rem;
   flex: 1;
   order: 2;
   text-align: left;
   width: 100%;
 `
 
-const NoResultsMessage = ({ searchTerm }) => <p>{`Can't find any app matching "${searchTerm}"`}</p>
+const NoResultsMessage = ({ category, searchTerm }) => (
+  <p>{`Can't find any ${category ? `${category.toLowerCase()} ` : ''}app matching "${searchTerm}"`}</p>
+)
 
 const totalSubscriptionPrice = app => app.subscriptions.reduce((total, subscription) => total + subscription.price, 0)
 
@@ -72,7 +70,7 @@ const AppsList = ({ apps }) => {
             <List apps={paginateRecords(filteredApps, page, config.paginationSize)} searchTerm={searchTerm} />
           </>
         ) : (
-          <NoResultsMessage searchTerm={searchTerm} />
+          <NoResultsMessage category={activeCategory} searchTerm={searchTerm} />
         )}
       </MainSection>
     </FlexContainer>

@@ -1,4 +1,3 @@
-import colors from './colors'
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
@@ -11,12 +10,12 @@ export default createGlobalStyle`
   }
 
   html {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 300;
     line-height: 1.5;
     text-align: left;
-    color: ${colors.primaryText};
-    background-color: ${colors.background};
+    color: ${({ theme }) => theme.primaryText};
+    background: ${({ theme }) => theme.background};
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
     -moz-osx-font-smoothing: grayscale;
@@ -42,16 +41,16 @@ export default createGlobalStyle`
 
   h3 {
     font-size: 1.5rem;
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     font-weight: 300;
   }
 
   p {
-    color: ${colors.grayDark};
+    color: ${({ theme }) => theme.secondaryText};
   }
 
   a {
-    color: ${colors.primary};
+    color: ${({ theme }) => theme.primary};
     text-decoration: none;
   }
 
@@ -70,6 +69,10 @@ export default createGlobalStyle`
   }
 
   :focus {
-    outline: ${colors.primary} auto 5px;
+    outline: ${({ theme }) => theme.primary} auto 5px;
+  }
+
+  ::selection {
+    background: ${({ theme }) => theme.primary}25;
   }
 `

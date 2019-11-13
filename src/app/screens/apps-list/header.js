@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Cancel as CancelIcon } from 'assets/icons'
-import { colors } from 'app/theme'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -12,38 +11,38 @@ const StyledHeader = styled.header`
 
 const StyledInput = styled.input`
   background-clip: padding-box;
-  border: 1px solid ${colors.grayLight};
+  border: 1px solid ${({ theme }) => theme.colors.grayLight};
   font-size: 1rem;
   font-weight: 300;
   outline: 0;
   padding: 1rem;
   resize: none;
-  transition: all 0.2s ease;
+  transition: all 300ms ease-in-out;
   width: 100%;
   -webkit-appearance: none;
 
   :focus,
   :hover {
-    border: 1px solid ${colors.primary};
+    border: 1px solid ${({ theme }) => theme.primary};
     box-shadow: none;
     cursor: auto;
-    transition: all 0.2s ease;
   }
 `
 
 const CancelButton = styled(props => (
-  <button type="button" {...props}>
+  <button title="Clear search" type="button" {...props}>
     <CancelIcon />
   </button>
 ))`
-  height: 20px;
-  width: 20px;
+  width: 1.1rem;
+  height: 1.1rem;
+  padding: 0.1rem;
   position: absolute;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  fill: ${colors.grayDark}50;
+  fill: ${({ theme }) => theme.primaryText}50;
 `
 
 const Header = ({ searchTerm, setPage, setSearchTerm }) => {

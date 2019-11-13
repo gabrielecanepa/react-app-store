@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Error as ErrorIcon } from 'assets/icons'
-import { colors } from 'app/theme'
 
 const FlexContainer = styled.div`
   width: 100%;
@@ -14,14 +13,15 @@ const FlexContainer = styled.div`
   text-align: center;
 `
 
-const StyledIcon = styled(props => <ErrorIcon width="450" {...props} />)`
-  padding: 2rem 0;
+const StyledErrorIcon = styled(ErrorIcon)`
+  margin: 0 1rem;
+  max-width: 32rem;
 `
 
 const Title = styled.h2`
-  color: ${colors.error};
+  color: ${({ theme }) => theme.error};
   line-height: 1;
-  margin-bottom: 1rem;
+  margin: 2rem 0 1rem;
 `
 
 const Message = styled.p`
@@ -35,7 +35,7 @@ const EmailLink = styled.a`
 
 const Error = ({ error }) => (
   <FlexContainer>
-    <StyledIcon />
+    <StyledErrorIcon />
     <Title>{'Ooops! Something went wrong.'}</Title>
     <Message>
       {`Looks like you ran into a ${error.type} error (code ${error.status}). Please try to load the page again, or `}

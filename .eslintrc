@@ -10,7 +10,7 @@
     "es6": true,
     "browser": true
   },
-  "plugins": ["jsx-a11y", "local-rules", "prettier", "react", "react-hooks", "sort-imports-es6-autofix"],
+  "plugins": ["import", "jsx-a11y", "prettier", "react", "react-hooks", "sort-imports-es6-autofix"],
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
@@ -38,7 +38,6 @@
   "rules": {
     "import/namespace": ["error", { "allowComputed": true }],
     "jsx-a11y/no-autofocus": 0,
-    "local-rules/no-relative-parent-imports": 2,
     "max-lines": 2,
     "no-console": 1,
     "object-shorthand": ["error", "always"],
