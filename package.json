@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src",
+    "zip": "[ -f .DS_Store ] && rm .DS_Store; git archive HEAD -o ../${PWD##*/}.zip"
   },
   "browserslist": {
     "production": [
