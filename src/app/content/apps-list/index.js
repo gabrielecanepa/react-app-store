@@ -27,8 +27,6 @@ const NoResultsMessage = ({ category, searchTerm }) => (
   <p>{`Can't find any ${category ? `${category.toLowerCase()} ` : ''}app matching "${searchTerm}"`}</p>
 )
 
-const totalSubscriptionPrice = app => app.subscriptions.reduce((total, subscription) => total + subscription.price, 0)
-
 const AppsList = ({ apps }) => {
   const [activeCategory, setActiveCategory] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -50,7 +48,7 @@ const AppsList = ({ apps }) => {
     () =>
       (activeCategory ? apps.filter(app => app.categories.includes(activeCategory)) : apps)
         .filter(app => `${app.name} ${app.description}`.toLowerCase().includes(searchTerm.toLowerCase()))
-        .sort((a, b) => totalSubscriptionPrice(a) - totalSubscriptionPrice(b)),
+        .sort((a, b) => a.subscriptionsPrice - b.subscriptionsPrice),
     [activeCategory, apps, searchTerm]
   )
 

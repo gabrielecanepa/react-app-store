@@ -1,6 +1,6 @@
 [
   {
-    "id": "9b565b11-7311-5b5e-a699-97873dffb361",
+    "id": "9c125t11-4441-6f5e-f649-95573eefc312",
     "name": "Voice Report",
     "description": "Calls reporting and analytics of your calls.",
     "categories": ["Voice Analytics", "Reporting", "Optimization"],
@@ -16,10 +16,9 @@
     ]
   },
   {
-    "id": "470fedc5-489e-5acb-a200-c85adaa18356",
+    "id": "5912ccab-9122-4eaa-1299-9542abc87391",
     "name": "Power Dialer",
-    "description":
-      "Auto dialer that will help increase your connect rates and talk time.",
+    "description": "Auto dialer that will help increase your connect rates and talk time.",
     "categories": ["Dialer"],
     "subscriptions": [
       {
@@ -39,8 +38,7 @@
   {
     "id": "52714d80-e3c4-5593-b9a3-e2ff484be372",
     "name": "Smart Text",
-    "description":
-      "Use SMS to help you communicate with your customers.",
+    "description": "Use SMS to help you communicate with your customers.",
     "categories": ["Channels"],
     "subscriptions": [
       {
@@ -92,8 +90,7 @@
   {
     "id": "7f89f001-9d7d-52f1-82cb-8f44eb1e4680",
     "name": "Video Contacts",
-    "description":
-      "Communicate with your customers and agents using video calls.",
+    "description": "Communicate with your customers and agents using video calls.",
     "categories": ["Productivity"],
     "subscriptions": [
       {

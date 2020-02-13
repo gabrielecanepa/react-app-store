@@ -38,8 +38,8 @@ const Error = ({ error }) => (
     <StyledErrorIcon />
     <Title>{'Ooops! Something went wrong.'}</Title>
     <Message>
-      {`Looks like you ran into a ${error.type} error (code ${error.status}). Please try to load the page again, or `}
-      <EmailLink href="mailto:support@talkdesk.com">{'click here'}</EmailLink>
+      {`Looks like you ran into a ${error.type} error (code ${error.status}). Please try to reload the page, or `}
+      <EmailLink href="#">{'click here'}</EmailLink>
       {' to contact our support.'}
     </Message>
   </FlexContainer>

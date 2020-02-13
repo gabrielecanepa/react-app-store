@@ -1,6 +1,6 @@
-# Apps List Mini Challenge
+# React App Store
 
-The prototype was built using React, [styled-components](https://styled-components.com), and a custom ESLint configuration.
+Simple app store interface built using React, [styled-components](https://styled-components.com), and a custom ESLint configuration.
 
 ## Setup
 
@@ -25,4 +25,4 @@ yarn lint
 ## Notes
 
 - The app uses the [`react-highlight-words`](https://github.com/bvaughn/react-highlight-words) library to highlight the searched text and improve the general user experience
-- A live version has been deployed with Netlify, and is available [here](https://gabrielecanepa-talkdesk-challenge.netlify.com/)
+- A live version has been deployed with Netlify, and is available [here](https://react-app-store.netlify.com)

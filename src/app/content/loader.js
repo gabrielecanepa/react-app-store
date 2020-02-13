@@ -16,7 +16,7 @@ const StyledLoader = styled(LoaderIcon)`
   fill: ${({ theme }) => theme.primary};
   width: 6rem;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.mobile}px) {
+  @media (min-width: ${({ theme }) => theme.screens.mobile}px) {
     width: 8rem;
   }
 `
